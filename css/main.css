@@ -265,4 +265,45 @@ textarea {
   Your css goes below this comment:
  *****/
 
+ .no-select {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+ }
 
+ .board {
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+ }
+
+
+ .board .column {
+    border: 1px solid black;
+    height: 960px;
+    width: 320px;
+    margin: 0 12px;
+
+ }
+
+ .board .column .column-title {
+    text-align: center;
+    width: 100%;
+ }
+
+ .board .column .add-card-button {
+    text-align: center;
+    margin: 0 auto;
+    width: 80px;
+    border: 1px solid blue;
+    background: cyan;
+ }
+
+.board .column .add-card-button:hover {
+    background: navy;
+    cursor: pointer;
+    color: white;
+    border: 1px solid cyan;
+}
