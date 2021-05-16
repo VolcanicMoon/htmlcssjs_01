@@ -297,16 +297,22 @@ textarea {
   flex-direction: column;
 }
 
-.kanban-add-card-btn {
+.kanban-card {
   width: 100%;
   background-color: #fff;
-  border: 2px solid #16c6ee;
+  border: 2px solid #ff7f50;
   border-radius: 4px;
-  height: 48px;
+  min-height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #ff7f50;
+  margin-bottom: 8px;
+}
+
+.kanban-add-card-btn.kanban-card {
+  border: 2px solid #16c6ee;
   color: #16c6ee;
 
   /* No selection */
