@@ -4,7 +4,7 @@ function mainFunction() {
   addCardButton.forEach(function(el,i){
     el.addEventListener("click", function(event){
       if (event.currentTarget instanceof HTMLDivElement) {
-        var card = createCard(event.currentTarget.parentElement.parentElement, "title" + cardNumber, "description" + cardNumber);
+        var card = createCard("title" + cardNumber, "description" + cardNumber);
         event.currentTarget.before(card);
         cardNumber += 1;
       }
@@ -12,43 +12,72 @@ function mainFunction() {
   })
 }
 
-function createCard(columnEl, title, description) {
+
+
+function createCard(title, description) {
   var card = document.createElement("div");
   card.classList.add("card");
+
   var deleteButton = document.createElement("div");
-  deleteButton.classList.add("delete-button");
+  deleteButton.classList.add("delete-button", "no-select");
   deleteButton.innerText = "X";
   card.append(deleteButton);
+
   var titleDiv = document.createElement("div");
   titleDiv.classList.add("card-title");
   titleDiv.innerText = title;
   card.append(titleDiv);
+
   var descriptionDiv = document.createElement("div");
   descriptionDiv.classList.add("card-description");
   descriptionDiv.innerText = description;
   card.append(descriptionDiv);
 
-  
+  var moveButtonsContainer = document.createElement("div");
+  moveButtonsContainer.classList.add("move-buttons-container");
+
+  var moveLeft = document.createElement("div");
+  moveLeft.classList.add("move-left", "move-button");
+  moveLeft.innerText = "←";
+  moveButtonsContainer.append(moveLeft);
+  moveLeft.addEventListener("click", function(event){
+    if (event.currentTarget instanceof HTMLDivElement) {
+      var parentColumn = event.currentTarget.parentElement.parentElement.parentElement.parentElement
+      var currentCard = card;
+      parentColumn.previousElementSibling.querySelector(".add-card-button").before(currentCard);
+    }
+  })
 
   var moveUp = document.createElement("div");
   moveUp.classList.add("move-up", "move-button");
   moveUp.innerText = "↑";
-  card.append(moveUp);
+  moveButtonsContainer.append(moveUp);
+  moveUp.addEventListener("click", function(event){
+    var currentCard = card;
+    currentCard.previousElementSibling.before(currentCard);
+  })
+
   var moveDown = document.createElement("div");
   moveDown.classList.add("move-down", "move-button");
   moveDown.innerText = "↓";
-  card.append(moveDown);
-  
+  moveButtonsContainer.append(moveDown);
+  moveDown.addEventListener("click", function(event){
+    var currentCard = card;
+    currentCard.nextElementSibling.after(currentCard);
+  })
 
- 
-  var moveLeft = document.createElement("div");
-  moveLeft.classList.add("move-left", "move-button");
-  moveLeft.innerText = "←";
-  card.append(moveLeft);
   var moveRight = document.createElement("div");
   moveRight.classList.add("move-right", "move-button");
   moveRight.innerText = "→";
-  card.append(moveRight);
+  moveButtonsContainer.append(moveRight);
+  moveRight.addEventListener("click", function(event){
+    if (event.currentTarget instanceof HTMLDivElement) {
+      var parentColumn = event.currentTarget.parentElement.parentElement.parentElement.parentElement
+      var currentCard = card;
+      parentColumn.nextElementSibling.querySelector(".add-card-button").before(currentCard);
+    }
+  })
+  card.append(moveButtonsContainer);
   deleteButton.addEventListener("click", function(event){
     var currentCard = card;
     currentCard.remove()

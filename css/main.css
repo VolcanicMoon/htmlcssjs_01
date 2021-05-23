@@ -363,3 +363,7 @@ textarea {
   cursor: pointer;
   background: forestgreen;
 }
+
+.card .move-button {
+  display: inline-block;
+}
