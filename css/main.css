@@ -15,6 +15,7 @@ html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+  background: #181a1b;
 }
 
 /*
@@ -273,6 +274,8 @@ textarea {
   user-select: none;
  }
 
+ 
+
  .board {
   padding: 40px;
   display: flex;
@@ -296,11 +299,12 @@ textarea {
  }
 
  .board .column {
+  background: #5478BE;
   border: 1px solid black;
   height: 960px;
   width: 320px;
   margin: 0 12px;
-    
+  border-radius: 12px;
  }
 
  .board .column .column-title {
@@ -308,60 +312,89 @@ textarea {
   width: 100%;
  }
 
+ .board .column .column-title:hover {
+  cursor: pointer;
+ }
+
  .board .column .add-card-button {
   text-align: center;
   margin: 0 auto;
   width: 80px;
-  border: 1px solid blue;
-  background: cyan;
+  border: 1px solid rgb(118, 118, 241);
+  border-radius: 12px;
+  background: rgb(110, 250, 250);
  }
 
 .board .column .add-card-button:hover {
-  background: navy;
+  background: rgb(91, 173, 228);
   cursor: pointer;
   color: white;
-  border: 1px solid cyan;
+  border: 1px solid rgb(110, 250, 250);
+  border-radius: 12px;
+  transition-duration: 0.4s;
 }
 
 .card {
-  padding: 20px 40px;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 20px;
+  background: #5E9DD2;
 }
 
 .card .card-title {
   text-align: center;
 }
 
+.card .card-title:hover {
+  cursor: pointer;
+}
+
 .card .card-description {
   text-align: center;  
 }
 
+.card .card-description:hover {
+  cursor: pointer;
+}
+
 .card .delete-button {
   width: 20px;
+  height: 20px;
+  font-size: 16px;
   text-align: center;
-  border: 1px solid red;
-  background: black;
-  color: white;
+  border: 1px solid #DD2774;
+  background: #95124D;
+  color: #DD2774;
   margin-left: auto;
 }
 
 .card .delete-button:hover {
-  border: 1px solid magenta;
+  border: 1px solid #95124D;
+  color: #95124D;
+  border-radius: 2px;
   cursor: pointer;
-  background: grey;
+  transition-duration: 0.4s;
+  background: #DD2774;
 }
 
 .card .move-button {
   width: 20px;
   text-align: center;
-  background: lawngreen;
-  border: 1px solid green;
+  background: #95124D;
+  border: 1px solid #DD2774;
+  border-radius: 8px;
+  color: #DD2774;
 }
 
 .card .move-button:hover {
   cursor: pointer;
-  background: forestgreen;
+  background: #DD2774;
+  border: 1px solid #95124D;
+  transition-duration: 0.4s;
+  color: #95124D;
 }
 
 .card .move-button {
